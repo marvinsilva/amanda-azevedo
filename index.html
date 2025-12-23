@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dra. Amanda Azevedo | Farmácia Estética Avançada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Variáveis de Cor (Paleta Rose Gold & Sofisticação) --- */
+        :root {
+            --primary: #d4af9b; /* Tom Rose Gold/Pêssego sofisticado */
+            --secondary: #faf7f8; /* Fundo quase branco com toque rosado */
+            --text-dark: #333333; /* Cinza chumbo para contraste */
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--secondary); color: var(--text-dark); line-height: 1.7; }
+
+        h1, h2, h3, .logo { font-family: 'Cinzel Decorative', cursive; color: var(--text-dark); }
+        
+        /* --- Header --- */
+        header {
+            background-color: var(--white);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(212, 175, 155, 0.15); /* Sombra suave na cor da marca */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo { font-size: 1.4rem; font-weight: 700; color: var(--text-dark); text-decoration: none; }
+        .logo span { color: var(--primary); }
+        
+        nav ul { list-style: none; display: flex; gap: 30px; }
+        nav a { text-decoration: none; color: #666; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; font-weight: 600; }
+        nav a:hover { color: var(--primary); }
+
+        /* --- Hero Section --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            min-height: 85vh;
+            padding: 0 5%;
+            background: linear-gradient(to right, var(--secondary) 40%, var(--white) 40%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Elemento decorativo de fundo */
+        .hero::before {
+            content: ''; position: absolute; top: -50px; right: -50px; width: 300px; height: 300px;
+            background: var(--primary); opacity: 0.1; border-radius: 50%; filter: blur(50px);
+        }
+        
+        .hero-content { flex: 1; padding-right: 50px; z-index: 2; }
+        .hero-content h1 { font-size: 3rem; line-height: 1.2; margin-bottom: 20px; }
+        .sub-tag { color: var(--primary); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 15px; }
+        
+        .hero-image { flex: 1; text-align: center; z-index: 2; position: relative; }
+        .hero-image img { 
+            width: 90%; max-width: 500px; height: auto;
+            border-radius: 20px;
+            box-shadow: 15px 15px 0px rgba(212, 175, 155, 0.3); /* Sombra sólida na cor da marca */
+            object-fit: cover;
+        }
+
+        .btn {
+            display: inline-block; padding: 15px 40px; background: linear-gradient(45deg, var(--primary), #eacdae); color: var(--white);
+            text-decoration: none; border-radius: 4px; font-weight: 600; letter-spacing: 1px; margin-top: 30px;
+            box-shadow: 0 10px 20px rgba(212, 175, 155, 0.3); transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(212, 175, 155, 0.4); }
+
+        /* --- Seções Gerais --- */
+        section { padding: 80px 5%; }
+        h2.section-title { text-align: center; font-size: 2.5rem; margin-bottom: 60px; position: relative; }
+        h2.section-title::after { content: ''; display: block; width: 80px; height: 3px; background: var(--primary); margin: 15px auto 0; }
+
+        /* --- Sobre --- */
+        .about-container { display: flex; gap: 50px; align-items: center; max-width: 1100px; margin: 0 auto; }
+        .about-text { flex: 1; }
+        .about-text p { margin-bottom: 20px; color: #555; }
+        .highlight-box { border-left: 4px solid var(--primary); padding-left: 20px; font-style: italic; color: #777; margin: 30px 0; }
+
+        /* --- Procedimentos --- */
+        .services { background-color: var(--white); }
+        .grid-services { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        
+        .card-service { 
+            background: var(--secondary); padding: 40px 30px; text-align: center; border-radius: 12px; transition: 0.3s; border: 1px solid transparent;
+        }
+        .card-service:hover { background: var(--white); border-color: var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.05); transform: translateY(-5px); }
+        .card-service h3 { margin-bottom: 15px; font-size: 1.3rem; }
+        .service-icon { font-size: 2.5rem; margin-bottom: 25px; display: block; }
+
+        /* --- Locais de Atendimento --- */
+        .locations-container { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 40px; }
+        .location-box { background: var(--white); padding: 30px; border-radius: 8px; text-align: center; width: 300px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 3px solid var(--primary); }
+        .location-box h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; margin-bottom: 15px; font-size: 1.2rem; }
+
+        /* --- Footer --- */
+        footer { background-color: #222; color: #aaa; padding: 80px 5%; text-align: center; }
+        .footer-content h2 { color: var(--primary); margin-bottom: 20px; }
+        .instagram-btn { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(45deg, #405de6, #833ab4, #c13584, #e1306c, #fd1d1d); color: white; padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; margin-bottom: 30px; }
+
+        /* --- Botão WhatsApp Flutuante --- */
+        .whatsapp-float {
+            position: fixed; bottom: 25px; right: 25px; z-index: 1010;
+            background-color: #25d366; width: 60px; height: 60px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: transform 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+        .whatsapp-float img { width: 35px; height: 35px; }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero { flex-direction: column-reverse; padding-top: 40px; text-align: center; background: var(--secondary); }
+            .hero-content { padding-right: 0; margin-top: 40px; }
+            .hero-image img { width: 100%; max-width: 350px; }
+            .hero-content h1 { font-size: 2.2rem; }
+            nav ul { display: none; } /* Em produção, usar menu JS */
+            .about-container { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">Dra. Amanda <span>Azevedo</span></a>
+        <nav>
+            <ul>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#procedimentos">Procedimentos</a></li>
+                <li><a href="#locais">Locais</a></li>
+                <li><a href="https://instagram.com/dra_amandaazevedo" target="_blank">Instagram</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <span class="sub-tag">Farmácia Estética Avançada</span>
+            <h1>Harmonização Facial com Ciência e Naturalidade.</h1>
+            <p>Realce sua melhor versão através de procedimentos seguros, personalizados e minimamente invasivos em Porto Alegre e Canoas.</p>
+            <a href="https://wa.me/5551999999999" class="btn">Agendar Avaliação</a>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1614850876451-e254d5c3073c?auto=format&fit=crop&w=800&q=80" alt="Dra. Amanda Azevedo">
+        </div>
+    </section>
+
+    <section id="sobre">
+        <h2 class="section-title">A Especialista</h2>
+        <div class="about-container">
+            <div style="flex: 1;">
+                 <img src="https://images.unsplash.com/photo-1579165466991-467135ad3110?auto=format&fit=crop&w=600&q=60" style="width: 100%; border-radius: 12px; object-fit: cover; height: 400px;" alt="Consultório">
+            </div>
+            <div class="about-text">
+                <p>Olá! Sou a <strong>Dra. Amanda Azevedo</strong>, Farmacêutica Esteta apaixonada por elevar a autoestima através da ciência.</p>
+                <p>Minha formação em Farmácia me proporciona um profundo conhecimento sobre a ação dos ativos no organismo, garantindo que cada procedimento seja realizado com a máxima segurança e eficácia.</p>
+                <div class="highlight-box">
+                    "Acredito na estética que respeita seus traços únicos, buscando resultados elegantes e naturais, sem exageros."
+                </div>
+                <p>Dedico-me a um atendimento personalizado, ouvindo suas queixas para traçar o melhor plano de tratamento para sua pele e contorno facial.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="procedimentos" class="services">
+        <h2 class="section-title">Procedimentos Realizados</h2>
+        <div class="grid-services">
+            <div class="card-service">
+                <span class="service-icon">💉</span>
+                <h3>Toxina Botulínica (Botox)</h3>
+                <p>Suaviza rugas dinâmicas e linhas de expressão, prevenindo marcas profundas e proporcionando um olhar mais descansado e jovial.</p>
+            </div>
+            <div class="card-service">
+                <span class="service-icon">💧</span>
+                <h3>Ácido Hialurônico</h3>
+                <p>Preenchimento para repor volume perdido, melhorar contornos (lábios, malar, mandíbula) e promover hidratação profunda.</p>
+            </div>
+            <div class="card-service">
+                <span class="service-icon">✨</span>
+                <h3>Bioestimuladores de Colágeno</h3>
+                <p>Ativos (como Sculptra e Radiesse) que estimulam seu corpo a produzir colágeno, combatendo a flacidez e melhorando a firmeza da pele a longo prazo.</p>
+            </div>
+             <div class="card-service">
+                <span class="service-icon">🌟</span>
+                <h3>Skinbooster & Hidratação</h3>
+                <p>Tratamentos injetáveis focados na qualidade da pele, melhorando o viço, textura e hidratação profunda.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="locais">
+        <h2 class="section-title">Onde me encontrar</h2>
+        <p style="text-align: center;">Atendimento presencial com hora marcada nas cidades de:</p>
+        <div class="locations-container">
+            <div class="location-box">
+                <h4>📍 Porto Alegre</h4>
+                <p>Bairro Moinhos de Vento</p>
+                <small>(Endereço completo no agendamento)</small>
+            </div>
+            <div class="location-box">
+                <h4>📍 Canoas</h4>
+                <p>Centro / Marechal Rondon</p>
+                <small>(Endereço completo no agendamento)</small>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <h2>Dra. Amanda Azevedo</h2>
+            <p style="margin-bottom: 20px;">Siga meu trabalho e veja resultados reais:</p>
+            <a href="https://instagram.com/dra_amandaazevedo" target="_blank" class="instagram-btn">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" width="20" alt="Logo Instagram">
+                @dra_amandaazevedo
+            </a>
+            <p style="font-size: 0.9rem; margin-top: 30px;">
+                © 2024 Dra. Amanda Azevedo - Farmácia Estética.<br>
+                CRF-RS [Número do Registro Aqui]
+            </p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5551999999999" target="_blank" class="whatsapp-float" title="Agendar pelo WhatsApp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+
+</body>
+</html>
